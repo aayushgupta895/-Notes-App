@@ -1,10 +1,14 @@
 package com.example.notesapp2
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 
 //class wordListAdapter : ListAdapter<word,WordViewHolder>(WordsComparator()) {
@@ -41,13 +45,26 @@ import androidx.recyclerview.widget.RecyclerView
 //    }
 //}
 //}
-class NoteListAdapter(private val listener : IfWordAdapter) : RecyclerView.Adapter< NoteListAdapter.NoteViewHolder>() {
+class NoteListAdapter(private val context: Context, private val listener : IfWordAdapter) : RecyclerView.Adapter< NoteListAdapter.NoteViewHolder>() {
      private  val listOfNotes = ArrayList<Note>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
       val viewHolder =  NoteViewHolder.create(parent)
         viewHolder.deleteImg.setOnClickListener {
             listener.onItemClicked(listOfNotes[viewHolder.adapterPosition])
         }
+        viewHolder.itemView.setOnClickListener {
+            val intent = Intent(context, TitleItem::class.java)
+            Toast.makeText(context,listOfNotes[viewHolder.adapterPosition].title, Toast.LENGTH_SHORT).show()
+           intent.putExtra("titleItem", listOfNotes[viewHolder.adapterPosition].title)
+            intent.putExtra("descItem", listOfNotes[viewHolder.adapterPosition].desc)
+            context.startActivity(intent)
+        }
+//        viewHolder.setOnClickListener {
+//            val intent = Intent(context, TitleItem::class.java)
+//            intent.putExtra("titleItem", current.title)
+//            intent.putExtra("descItem", current.desc)
+//            context.startActivity(intent)
+//        }
         return viewHolder
     }
 
@@ -74,9 +91,14 @@ class NoteListAdapter(private val listener : IfWordAdapter) : RecyclerView.Adapt
             fun create(parent: ViewGroup): NoteViewHolder {
                 val view: View = LayoutInflater.from(parent.context)
                     .inflate(R.layout.recyclerview_item, parent, false)
-
+//                view.setOnClickListener {
+////                    var intent = Intent()
+////                    intent.putExtra("titleItem",listOfNotes[viewHolder.adapterPosition])
+//                }
                 return NoteViewHolder(view)
             }
+
+
         }
     }
 
