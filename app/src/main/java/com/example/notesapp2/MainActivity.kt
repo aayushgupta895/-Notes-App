@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity(),IfWordAdapter {
         }
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
         fab = findViewById(R.id.fab)
-        val adapter = NoteListAdapter(this)
+        val adapter = NoteListAdapter(this,this)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
         notesViewModel.allNotes.observe(this,  { list->
