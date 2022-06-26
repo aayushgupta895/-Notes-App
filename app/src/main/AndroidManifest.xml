@@ -23,6 +23,10 @@
             tools:ignore="Instantiatable">
 
         </activity>
+        <activity android:name=".TitleItem">
+
+        </activity>
+
     </application>
 <!--    <application-->
 <!--        android:name=".WordsApplication"-->
