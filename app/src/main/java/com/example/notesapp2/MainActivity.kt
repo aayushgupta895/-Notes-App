@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.activity.viewModels
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class MainActivity : AppCompatActivity(),IfWordAdapter {
+class MainActivity : AppCompatActivity(),IfNoteAdapter {
     lateinit var fab : FloatingActionButton
     private val emptyString = ""
 
