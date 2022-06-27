@@ -19,7 +19,7 @@ class TitleItem : AppCompatActivity() {
         titleViewTitle = findViewById(R.id.title_view_title)
         titleViewDescription = findViewById(R.id.title_view_description)
         val intent = intent
-        titleViewTitle.text= intent.getStringExtra("titleName").toString()
+        titleViewTitle.text= intent.getStringExtra("titleItem").toString()
         titleViewDescription.text = intent.getStringExtra("descItem").toString()
 
     }
