@@ -11,41 +11,8 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 
-//class wordListAdapter : ListAdapter<word,WordViewHolder>(WordsComparator()) {
-//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordViewHolder {
-//       val view: View = LayoutInflater.from(parent.context).inflate(R.layout.recyclerview_item,parent,false)
-//        return WordViewHolder(view)
-//
-//    }
-//
-//    override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
-//         val currentItem = getItemId(position)
-//             holder.bind(currentItem.toString())
-//    }
-//
-//    override fun getItemCount(): Int {
-//
-//    }
-//
-//
-//}
-//class WordViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-//    private val wordItemView : TextView = itemView.findViewById(R.id.textView)
-//    fun bind(text:String?){
-//        wordItemView.text = text
-//    }
-//}
-//class WordsComparator : DiffUtil.ItemCallback<word>() {
-//    override fun areItemsTheSame(oldItem: word, newItem: word): Boolean {
-//        return oldItem === newItem
-//    }
-//
-//    override fun areContentsTheSame(oldItem: word, newItem: word): Boolean {
-//        return oldItem.word == newItem.word
-//    }
-//}
-//}
-class NoteListAdapter(private val context: Context, private val listener : IfWordAdapter) : RecyclerView.Adapter< NoteListAdapter.NoteViewHolder>() {
+
+class NoteListAdapter(private val context: Context, private val listener : IfNoteAdapter) : RecyclerView.Adapter< NoteListAdapter.NoteViewHolder>() {
      private  val listOfNotes = ArrayList<Note>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
       val viewHolder =  NoteViewHolder.create(parent)
@@ -59,6 +26,7 @@ class NoteListAdapter(private val context: Context, private val listener : IfWor
             intent.putExtra("descItem", listOfNotes[viewHolder.adapterPosition].desc)
             context.startActivity(intent)
         }
+
 //        viewHolder.setOnClickListener {
 //            val intent = Intent(context, TitleItem::class.java)
 //            intent.putExtra("titleItem", current.title)
@@ -102,15 +70,7 @@ class NoteListAdapter(private val context: Context, private val listener : IfWor
         }
     }
 
-//    class WordsComparator : DiffUtil.ItemCallback<word>() {
-//        override fun areItemsTheSame(oldItem: word, newItem: word): Boolean {
-//            return oldItem === newItem
-//        }
-//
-//        override fun areContentsTheSame(oldItem: word, newItem: word): Boolean {
-//            return oldItem.word == newItem.word
-//        }
-//    }
+
 
     override fun getItemCount(): Int {
 
@@ -120,7 +80,8 @@ class NoteListAdapter(private val context: Context, private val listener : IfWor
 
 
 
-interface IfWordAdapter{
+
+interface IfNoteAdapter{
     fun onItemClicked(note:Note)
 }
 
